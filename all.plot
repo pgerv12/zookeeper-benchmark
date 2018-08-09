@@ -6,7 +6,7 @@ set size 1.0, 0.6
 set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 
 set output "create.ps"
 replot
-set term pop
+set term x11 0
 
 set xlabel "Time since start"
 set ylabel "DELETE ops per second"
@@ -16,7 +16,7 @@ set size 1.0, 0.6
 set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14
 set output "delete.ps"
 replot
-set term pop
+set term x11 1
 
 set xlabel "Time since start"
 set ylabel "READ ops per second"
@@ -26,7 +26,7 @@ set size 1.0, 0.6
 set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14
 set output "read.ps"
 replot
-set term pop
+set term x11 2
 
 set xlabel "Time since start"
 set ylabel "SETSINGLE ops per second"
@@ -36,7 +36,7 @@ set size 1.0, 0.6
 set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14
 set output "setsingle.ps"
 replot
-set term pop
+set term x11 3
 
 set xlabel "Time since start"
 set ylabel "SETMULTI ops per second"
@@ -46,4 +46,4 @@ set size 1.0, 0.6
 set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14
 set output "setmulti.ps"
 replot
-set term pop
+set term x11 4

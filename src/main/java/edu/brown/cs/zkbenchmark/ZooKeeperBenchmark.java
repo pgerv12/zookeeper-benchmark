@@ -30,6 +30,7 @@ public class ZooKeeperBenchmark {
 	private int _lowerbound;
 	private BenchmarkClient[] _clients;
 	private int _interval;
+	private int _blockSize;
 	private HashMap<Integer, Thread> _running;
 	private AtomicInteger _finishedTotal;
 	private int _lastfinished;
@@ -65,6 +66,7 @@ public class ZooKeeperBenchmark {
 		}
 		
 		_interval = conf.getInt("interval");
+		_blockSize = conf.getInt("blockSize");
 		_totalOps = conf.getInt("totalOperations");
 		_lowerbound = conf.getInt("lowerbound");
 		int totaltime = conf.getInt("totalTime");
@@ -76,12 +78,12 @@ public class ZooKeeperBenchmark {
 		_barrier = new CyclicBarrier(_clients.length+1);
 		_deadline = totaltime / _interval;
 		
-		LOG.info("benchmark set with: interval: " + _interval + " total number: " + _totalOps +
+		LOG.info("benchmark set with: interval: " + _interval + " block size: " + _blockSize + " total number: " + _totalOps +
 				" threshold: " + _lowerbound + " time: " + totaltime + " sync: " + (sync?"SYNC":"ASYNC"));
 
 		_data = "";
 
-		for (int i = 0; i < 20000; i++) { // 100,000 bytes of important data
+		for (int i = 0; i < (_blockSize/5); i++) {
 			_data += "!!!!!";
 		}
 
